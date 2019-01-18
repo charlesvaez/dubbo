@@ -20,6 +20,8 @@
         <module>springboot-dubbo-api</module>
         <module>springboot-dubbo-consumer</module>
         <module>springboot-dubbo-producer</module>
+        <module>nacos-dubbo-producer</module>
+        <module>nacos-dubbo-consumer</module>
     </modules>
 
     <properties>
@@ -33,6 +35,7 @@
        <!-- <curator-framework.version>2.12.0</curator-framework.version>-->
         <!--<zookeeper.version>3.4.9</zookeeper.version>-->
         <dubbo.starter.version>0.2.0</dubbo.starter.version>
+        <nacos.starter.version>0.2.0</nacos.starter.version>
     </properties>
 
     <dependencies>
@@ -71,6 +74,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dubbo Nacos registry dependency -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 
     <build>
         <plugins>
