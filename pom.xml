@@ -22,6 +22,7 @@
         <module>springboot-dubbo-producer</module>
         <module>nacos-dubbo-producer</module>
         <module>nacos-dubbo-consumer</module>
+        <module>nacos-config</module>
     </modules>
 
     <properties>
@@ -44,29 +45,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo.starter.version}</version>
-        </dependency>
-
-       <!-- <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>${curator-framework.version}</version>
-        </dependency>-->
-
-       <!-- <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-        </dependency>-->
-
-       <!-- <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-autoconfigure</artifactId>
-            <version>${dubbo.starter.version}</version>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,12 +55,37 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Dubbo Nacos registry dependency -->
+            <!-- springboot集成dubbo，依赖zookeeper-->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.starter.version}</version>
+            </dependency>
+            <!-- springboot集成dubbo，依赖zookeeper-->
+
+            <!-- springboot集成nacos-config-->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-starter</artifactId>
+                <version>0.2.0</version>
+            </dependency>
+            <!-- springboot集成nacos-config-->
+
+            <!-- Dubbo dependency -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.6.2</version>
+            </dependency>
+            <!-- Dubbo dependency -->
+
+            <!-- dubbo，依赖nacos -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo-registry-nacos</artifactId>
                 <version>0.0.1</version>
             </dependency>
+            <!-- dubbo，依赖nacos -->
 
         </dependencies>
 
