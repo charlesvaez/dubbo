@@ -1,7 +1,7 @@
 package com.hgsoft.springbootdubboproducer.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.hgsoft.springbootdubboapi.service.DemoService;
+import com.hgsoft.springboot.dubbo.api.service.DemoService;
 
 /**
  *

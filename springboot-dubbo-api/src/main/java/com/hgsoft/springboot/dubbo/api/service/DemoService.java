@@ -1,4 +1,4 @@
-package com.hgsoft.springbootdubboapi.service;
+package com.hgsoft.springboot.dubbo.api.service;
 
 /**
  * DemoService

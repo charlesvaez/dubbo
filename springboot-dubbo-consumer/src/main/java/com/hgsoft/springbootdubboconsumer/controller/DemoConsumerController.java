@@ -1,7 +1,7 @@
 package com.hgsoft.springbootdubboconsumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.hgsoft.springbootdubboapi.service.DemoService;
+import com.hgsoft.springboot.dubbo.api.service.DemoService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
