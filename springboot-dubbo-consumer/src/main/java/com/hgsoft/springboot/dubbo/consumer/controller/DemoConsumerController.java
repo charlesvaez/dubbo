@@ -1,4 +1,4 @@
-package com.hgsoft.springbootdubboconsumer.controller;
+package com.hgsoft.springboot.dubbo.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.hgsoft.springboot.dubbo.api.service.DemoService;

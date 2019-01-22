@@ -1,4 +1,4 @@
-package com.hgsoft.springbootdubboproducer.service.impl;
+package com.hgsoft.springboot.dubbo.producer.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.hgsoft.springboot.dubbo.api.service.DemoService;
@@ -10,6 +10,7 @@ import com.hgsoft.springboot.dubbo.api.service.DemoService;
 public class DemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {
+        System.out.println("=======================DemoServiceImpl=======================");
         return "Hello, " + name + " (from Spring Boot)";
     }
 }
