@@ -37,6 +37,8 @@
         <!--<zookeeper.version>3.4.9</zookeeper.version>-->
         <dubbo.starter.version>0.2.0</dubbo.starter.version>
         <nacos.starter.version>0.2.0</nacos.starter.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <ch.qos.logback.version>1.2.3</ch.qos.logback.version>
     </properties>
 
     <dependencies>
@@ -94,6 +96,31 @@
                 <version>0.0.1</version>
             </dependency>
             <!-- dubbo，依赖nacos -->
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${ch.qos.logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${ch.qos.logback.version}</version>
+            </dependency>
+
 
         </dependencies>
 
