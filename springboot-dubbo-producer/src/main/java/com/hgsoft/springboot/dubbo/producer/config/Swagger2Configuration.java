@@ -13,18 +13,6 @@ import org.springframework.web.filter.CorsFilter;
 @DubboComponentScan(basePackages = { "com.hgsoft.springboot.dubbo.producer.service.impl" })  //dubbo实现类的路径
 @EnableDubboSwagger //生成api-docs及调用的REST接口
 public class Swagger2Configuration {
-//    @Bean
-//    public Docket createRestApi() {
-//        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-//                .select().apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)
-//                ).paths(PathSelectors.any()).build();
-//        //http://localhost:9091/swagger-ui.html
-//    }
-//
-//    private ApiInfo apiInfo() {
-//        return new ApiInfoBuilder().title("demo").description("demo测试接口").contact("hcx").version("1.0.0").build();
-//    }
-
     @Bean
     public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
