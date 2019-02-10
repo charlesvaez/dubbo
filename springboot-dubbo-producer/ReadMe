@@ -1,0 +1,87 @@
+1、本地安装docker
+    centos7以上才能安装最新版docker
+    //CE-社区版
+    yum install -y yum-utils device-mapper-persistent-data lvm2
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    --yum-config-manager --enable docker-ce-edge
+    --yum-config-manager --enable docker-ce-test
+    --------------------------安装指定版本--------------------------
+    --yum list docker-ce --showduplicates | sort -r
+    --yum install docker-ce-18.06.1.ce
+    --------------------------安装指定版本--------------------------
+    yum install docker-ce
+
+2、Docker服务端开放Remote API
+    在Docker服务端：
+    systemctl edit docker.service或者编辑vi /etc/systemd/system/docker.service.d/override.conf
+
+          [Service]
+          ExecStart=
+          ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375
+
+    重新启动服务
+     sudo systemctl daemon-reload
+     systemctl restart docker
+
+    本地测试2375是否通
+    curl http://localhost:2375/version
+
+3、应用中集成Docker
+     pom.xml
+    <properties>
+           <!--docker-->
+           <dockerfile.maven.version>1.4.0</dockerfile.maven.version>
+           <docker.image.prefix>dubbo</docker.image.prefix>
+    </properties>
+
+    <build>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile.maven.version}</version>
+                    <!--放开这块注释，则运行mvn deploy命令就会打包镜像<executions>-->
+                    <!--<execution>-->
+                    <!--<id>default</id>-->
+                    <!--<goals>-->
+                    <!--<goal>build</goal>-->
+                    <!--<!–<goal>push</goal>–>-->
+                    <!--</goals>-->
+                    <!--</execution>-->
+                    <!--</executions>-->
+                    <configuration>
+                        <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+     </build>
+
+     在项目根目录增加Dockerfile文件，内容如下
+         #基于哪个镜像
+         FROM java:8
+         #指定维护者信息
+         MAINTAINER hcx
+         #将本地文件夹挂载到当前容器
+         VOLUME /tmp
+         #复制文件到容器
+         ADD target/springboot-dubbo-producer.jar app.jar
+         RUN sh -c 'touch /app.jar'
+         ENV JAVA_OPTS=""
+         EXPOSE 9091
+         #配置容器启动后执行的命令
+         ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+
+4、执行
+      打包：mvn package -DskipTests
+
+      ---配置环境变量 DOCKER_HOST=tcp://192.168.183.175:2375  （配置在JVM中）
+      发布镜像：mvn dockerfile:build
+
+5、镜像运行
+     -d 后台运行
+     docker run -d -p 9091:9091  -it dubbo/springboot-dubbo-producer --name springboot-dubbo-producer
+     docker ps

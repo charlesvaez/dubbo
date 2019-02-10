@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hgsoft</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>springboot-dubbo-anno-producer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springboot-dubbo-anno-producer</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hgsoft</groupId>
+            <artifactId>springboot-dubbo-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>1.5.16</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.deepoove</groupId>
+            <artifactId>swagger-dubbo</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+    </dependencies>
+
+   <!-- <build>
+        <finalName>${fileName}</finalName>
+        <resources>
+            <resource>
+                <targetPath>${project.build.directory}/classes</targetPath>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>target/classes/</classesDirectory>
+                    <includes>
+                        <include>META-INF/**/*.*</include>
+                        <include>*.properties</include>
+                        <include>${jarInclude1}</include>
+                        <include>${jarInclude2}</include>
+                        <include>${jarInclude3}</include>
+                        <include>${jarInclude4}</include>
+                        <include>${jarInclude5}</include>
+                        <include>*.xml</include>
+                        <include>com/**/*.*</include>
+                    </includes>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.alibaba.dubbo.container.Main</mainClass>
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <type>jar</type>
+                            <includeTypes>jar</includeTypes>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>springboot-dubbo-anno-producer</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <fileName>springboot-dubbo-anno-producer</fileName>
+                <springXmlName>applicationContext-hello-sp.xml</springXmlName>
+                <jarInclude1>com/hgsoft/springboot/dubbo/anno/producer/config/*</jarInclude1>
+                <jarInclude2>com/hgsoft/springboot/dubbo/anno/producer/impl/*</jarInclude2>
+                <jarInclude3>nofile</jarInclude3>
+                <jarInclude4>nofile</jarInclude4>
+                <jarInclude5>nofile</jarInclude5>
+            </properties>
+        </profile>
+    </profiles>-->
+
+
+</project>
