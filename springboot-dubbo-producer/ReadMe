@@ -83,5 +83,12 @@
 
 5、镜像运行
      -d 后台运行
-     docker run -d -p 9091:9091  -it dubbo/springboot-dubbo-producer --name springboot-dubbo-producer
+     docker run -d -p 9091:9091 dubbo/springboot-dubbo-producer --name springboot-dubbo-producer
      docker ps
+
+     --docker run -d -p 9091:9091 --name springboot-dubbo-producer --add-host=dockerhost:`docker network inspect  --format='{{range .IPAM.Config}}{{.Gateway}}{{end}}' bridge` dubbo/springboot-dubbo-producer
+     docker exec -it a9fd31bd34a7 /bin/bash
+
+
+     docker pull zookeeper
+     docker run -d -p 2181:2181 -p 2888:2888 -p 3888:3888 -v /usr/local/zookeeper/zk1/data:/data -v /usr/local/zookeeper/zk1/datalog:/datalog -v /usr/local/zookeeper/zk1/logs:/logs --name zookeeper-3.4.13 zookeeper
