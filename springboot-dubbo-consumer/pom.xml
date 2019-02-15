@@ -23,5 +23,32 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>springboot-dubbo-consumer</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile.maven.version}</version>
+                <!--放开这块注释，则运行mvn deploy命令就会打包镜像<executions>-->
+                <!--<execution>-->
+                <!--<id>default</id>-->
+                <!--<goals>-->
+                <!--<goal>build</goal>-->
+                <!--<!–<goal>push</goal>–>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 </project>

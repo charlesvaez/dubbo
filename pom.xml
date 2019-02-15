@@ -40,7 +40,9 @@
         <nacos.starter.version>0.2.0</nacos.starter.version>
         <swagger2.version>2.9.2</swagger2.version>
         <ch.qos.logback.version>1.2.3</ch.qos.logback.version>
-
+        <!--docker-->
+        <dockerfile.maven.version>1.4.0</dockerfile.maven.version>
+        <docker.image.prefix>dubbo</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -138,7 +140,6 @@
     </dependencyManagement>
 
     <build>
-        <finalName>springboot-dubbo-producer</finalName>
         <plugins>
             <!--
                 用于将应用打成可直接运行的jar（该jar就是用于生产环境中的jar）

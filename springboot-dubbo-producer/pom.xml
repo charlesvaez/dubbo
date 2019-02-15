@@ -54,6 +54,7 @@
     </dependencies>
 
     <build>
+        <finalName>springboot-dubbo-producer</finalName>
         <plugins>
             <plugin>
                 <groupId>com.spotify</groupId>
