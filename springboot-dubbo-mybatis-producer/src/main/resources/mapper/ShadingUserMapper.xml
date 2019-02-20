@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hgsoft.springboot.dubbo.mybatis.producer.mapper.ShardingUserMapper" >
+    <sql id="Base_Column_List" >
+        id, name,pwd,createTime
+    </sql>
+    <select id="findAllUsers" resultType="ShardingUserModel">
+        select
+           <include refid="Base_Column_List" />
+        from tb_user
+    </select>
+    <select id="getUser" resultType="ShardingUserModel" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from tb_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="addUser" parameterType="ShardingUserModel" >
+     insert into tb_user (id, name,pwd,createTime) values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+   </insert>
+</mapper>

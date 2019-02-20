@@ -1,0 +1,22 @@
+docker pull mysql
+docker run -d -p 3306:3306 -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=hgsoft --name mysql8 mysql
+docker logs -f -t --tail=100 426252331eb1
+docker exec -it 426252331eb1 /bin/bash
+
+
+create user 'test'@'%' identified with mysql_native_password by 'hgsoft';
+grant all on *.* to 'test'@'%';
+flush privileges;
+
+问题：
+    Mysql Error:The user specified as a definer (‘mysql.infoschema’@’localhost’) does not exist’ when trying to dump tablespaces
+    我的MYSQL 使用Docker进行部署的，当我进行版本升级（MySQL 5.7 to MySQL 8.0）之后，尝试进行连接的时候就会报这个错误。
+
+    解决办法：
+    mysql> SET GLOBAL innodb_fast_shutdown = 1; //可不需要
+    mysql_upgrade -u root -p
+
+    其实主要是因为在my.cnf配置文件中skip_name*****跳过了域名解析并且删除掉了user表中所有localhost为地址的用户
+    而升级则是把这些用户重新添加了回来
+
+
